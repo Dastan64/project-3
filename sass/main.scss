@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+}
+@mixin font1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+@mixin font2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+$color: #c0a064;
+@mixin font3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+body, h1, h2, ul {
+    margin: 0;
+}
+li {
+    display: block;
+}
+a {
+    text-decoration: none;
+}
+nav {
+    display: inline-block;
+}
+.header {
+    height: 900px;
+    background: url('../images/header-img-cover.png') no-repeat center top / cover,
+                url('../images/header-bg.png') no-repeat center top / cover;
+                .wrapper {
+                    position: relative;
+                    overflow-x: hidden;
+                }
+                .menu {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    background-color: #fff;
+                    transform: translateX(-100%);
+                    height: 100%;
+                    width: 30%;
+                    transition: 0.5s;
+                }
+                .menu-active {
+                    transform: translateX(0%); //menu coming from the left after clicking the burger button
+                }
+                .menu-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: -35px;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                }
+                .menu-list {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-direction: column;
+                    color: #8d8c8b;
+                    height: 30%;
+                    text-transform: uppercase;
+                    a {
+                        color: #8d8c8b;
+                        @include font2;
+                    }
+                }
+                .menu-btn span,
+                .menu-btn span::before,
+                .menu-btn span::after {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-top: -1px;
+                    margin-left: -10px;
+                    width: 20px;
+                    height: 2px;
+                    background-color: #222;
+                }
+                .menu-btn span::before {
+                    transform: translateY(-5px);
+                  }
+                .menu-btn span::after {
+                    transform: translateY(5px);
+                  }
+                .menu-btn span::before,
+                .menu-btn span::after {
+                  content: '';
+                  display: block;
+                  transition: 0.2s;
+                }
+                .menu-btn_active span {
+                    height: 0;
+                    &::before {
+                        transform: rotate(45deg);
+                    }
+                    &::after {
+                        transform: rotate(-45deg);
+                    }
+                }
+    &__links {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 130px;
+        text-transform: capitalize;
+        @include font1;
+        li {
+            margin-right: 30px;
+        }
+        .home-link {
+            color: #000;
+        }
+        a {
+            color: #8d8c8b;
+        }
+    }
+    &__container {
+        padding-top: 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    &__icons {
+        display: flex;
+        img {
+            margin-right: 20px;
+        }
+    }
+    &__logo-container {
+        width: 220px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    &__main-caption {
+        padding-top: 350px;
+        text-align: center;
+    }
+    &__heading {
+        @include font3;
+        font-size: 56px;
+        color: $color;
+    }
+    &__paragraph {
+        font-size: 18px;
+        letter-spacing: 2px;
+        @include font2;
+    }
+    &__btn {
+        display: block;
+        margin: 120px auto;
+        padding: 15px;
+        border: 2px solid $color;
+        color: $color;
+        background-color: transparent;
+        width: 225px;
+        @include font1;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        outline: none;
+    }
+}
+.works {
+    &__heading {
+        text-align: center;
+        padding-top: 100px;
+        @include font3;
+    }
+    &__images {
+        display: grid;
+        justify-content: center;
+        grid-template: repeat(4, 370px) / repeat(3, minmax(315px, 370px));
+        grid-gap: 30px;
+        padding-top: 60px;
+    }
+    .image-1 {
+        background: url('../images/work-image-1.png') no-repeat center center / cover;
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+    }
+    .image-2 {
+        background: url('../images/work-image-2.png') no-repeat center center / cover;
+    }
+    .image-3 {
+        background: url('../images/work-image-3.png') no-repeat center center / cover;
+    }
+    .image-4 {
+        background: url('../images/work-image-4.png') no-repeat center center / cover;
+        grid-column: 1 / 4;
+        grid-row: 3 / 5;
+    }
+}
+.collections {
+    padding-top: 240px;
+    &__container {
+        display: grid;
+        justify-content: center;
+        grid-template: repeat(3, auto) / repeat(2, minmax(500px, 600px)); /*due to 'auto' value the height of the grid cells will change 
+                                                                            depending on content*/
+        .description {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 60px 0 0 60px;
+            height: auto;
+        }
+    }
+    &__btn {
+        display: block;
+        border: 2px solid #c0a064;
+        color: #c0a064;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: center;
+        @include font1;
+        padding: 15px;
+        margin-top: 65px;
+        width: 165px;
+        margin-bottom: 60px;
+    }
+    h2 {
+        @include font3;
+        padding-top: 60px;
+    }
+    p {
+        @include font2;
+        line-height: 26px;
+        width: 95%;
+    }
+    .photo-1 {
+        background: url('../images/photo-1.png') no-repeat center center / cover;
+    }
+    .photo-2 {
+        background: url('../images/photo-2.png') no-repeat center center / cover;
+    }
+    .photo-3 {
+        background: url('../images/photo-3.png') no-repeat center center / cover;
+    }
+}
+.form__heading {
+    text-align: center;
+    padding-top: 120px;
+    @include font3;
+}
+.form__fields {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input, textarea {
+        font-family: "Lato", sans-serif;
+        font-size: 1.125rem;
+        width: 370px;
+        outline: none;
+        padding-left: 20px;
+        &::placeholder {
+            @include font2;
+            font-size: 1rem;
+            padding: 20px 0 0 20px;
+        }
+    }
+    input {
+        height: 55px;
+    }
+    .form__name, .form__e-mail {
+        border-top: 1px solid #6c6a68;
+        border-right: 1px solid #6c6a68;
+        border-left: 1px solid #6c6a68;
+    }
+    textarea {
+        padding-top: 20px;
+        height: 180px;
+        @extend .form__name;
+        border-bottom: 1px solid #6c6a68;
+    }
+    .form__btn {
+        @extend .header__btn;
+        margin-top: 20px;
+        width: 370px;
+    }
+    }
+.footer__small-caption {
+    @include font2;
+    text-align: center;
+}
+.footer__icons {
+    padding: 30px 0 30px 15px;
+    display: flex;
+    justify-content: center;
+    img {
+        margin-right: 20px;
+    }
+}
